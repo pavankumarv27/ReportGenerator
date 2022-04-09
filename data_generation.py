@@ -75,6 +75,7 @@ def calculate_duration(dur, dt):
 
 def get_text(month, year):
     month_days = get_dates(3, 2022)
+    x = 6
     with open('places.txt') as f:
         lines = f.readlines()
         for line in lines:
@@ -98,7 +99,7 @@ def get_text(month, year):
                 to_date = int(data[1])
                 possible_holiday = True
 
-            x = 6
+            #x = 6
             input("Check 1")
             for i in range(from_date, to_date+1):
                 date_value = f'{i}.{month}.{year}'
@@ -149,7 +150,7 @@ def get_text(month, year):
                     write_excel(r=i+x, c=1, v=date_value)
                     write_excel(r=i+x, c=2, v='Saturday or Sunday')
 
-                input("Checking for 2--------------------------------------")
+                #input("Checking for 2--------------------------------------")
 
 
 if __name__ == '__main__':
