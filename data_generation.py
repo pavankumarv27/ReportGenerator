@@ -7,8 +7,8 @@ from create_report import write_excel
 def get_dates(month, year):
     num_of_days_in_month = calendar.monthrange(year, month)[1]
 
-    new_d = datetime.strptime('1-3-2022', '%d-%m-%Y')
-    print(new_d.strftime('%A'))
+    calculate_starting_day_of_month = datetime.strptime('1-4-2022', '%d-%m-%Y')
+    print(calculate_starting_day_of_month.strftime('%A'))
 
     print(num_of_days_in_month)
     month_dates = []
@@ -17,8 +17,10 @@ def get_dates(month, year):
         date = f"{n}.{month}.{year}"
         day = datetime.strptime(date, '%d.%m.%Y').strftime('%A')
         if day not in ['Saturday', 'Sunday']:
-            print(date, ':', day)
+            #print(date, ':', day)
+            pass
         date_and_day = date, day
+        print(date, ':', day)
         month_dates.append(date_and_day)
     return month_dates
 
@@ -74,7 +76,7 @@ def calculate_duration(dur, dt):
 
 
 def get_text(month, year):
-    month_days = get_dates(3, 2022)
+    month_days = get_dates(month, year)
     x = 6
     with open('places.txt') as f:
         lines = f.readlines()
@@ -100,7 +102,7 @@ def get_text(month, year):
                 possible_holiday = True
 
             #x = 6
-            input("Check 1")
+            #input("Check 1")
             for i in range(from_date, to_date+1):
                 date_value = f'{i}.{month}.{year}'
                 day = datetime.strptime(date_value, '%d.%m.%Y').strftime('%A')
@@ -145,6 +147,8 @@ def get_text(month, year):
                     write_excel(r=i+x, c=9, v=lodge_bill)
                     write_excel(r=i+x, c=10, v='')
 
+                    #input('1 row updated')
+
                 else:
                     print(date_value, 'Saturday or Sunday')
                     write_excel(r=i+x, c=1, v=date_value)
@@ -154,4 +158,4 @@ def get_text(month, year):
 
 
 if __name__ == '__main__':
-    get_text(3, 2022)
+    get_text(8, 2022)

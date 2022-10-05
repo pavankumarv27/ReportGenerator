@@ -1,1 +1,4 @@
 vnv/
+*.pyc
+__pycache__/
+__pycache__/create_report.cpython-39.pyc
